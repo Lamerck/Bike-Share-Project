@@ -1,4 +1,4 @@
---United data from the first three months into one table called tripdataq1
+--United data from the first three months into one table called tripdataq1 to explore the data
 --Eliminating the empty rows in the ride_id column
 SELECT * 
 FROM `case-studies-01.tripdata.tripdataq1`
