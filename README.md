@@ -52,7 +52,7 @@ The provided links lead to the index of the 'divvy-tripdata' bucket, where you c
 
 * `Google sheets` to preview one of the datasets to get familiar with the data
   
-*  `SQL` for data integration, transformation, exploration, and preparation for visualization with functions including `combining datasets`, `creating a table` with extracted date/time components, `filtering`, `sorting`, `aggregation`, utilizing `CTEs`. Review the [SQL Script]()
+*  `SQL` for data integration, transformation, exploration, and preparation for visualization with functions including `combining datasets`, `creating a table` with extracted date/time components, `filtering`, `sorting`, `aggregation`, utilizing `CTEs`. Review the [SQL Script](https://github.com/Lamerck/Bike-Share-Project/blob/main/sqlscript-for-bikes.sql)
 
 * `R` for data `importing`, `binding` cleaning, and manipulation, involving the addition and removal of columns, calculating various statistics e.g., average ride length, exploring patterns (e.g., popular routes, days, hours), and finally, creating insightful visualizations. Take a look at the [R Script](https://github.com/Lamerck/Bike-Share-Project/blob/main/rscript-for-bikes.R)
 
