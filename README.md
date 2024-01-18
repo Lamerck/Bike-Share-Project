@@ -104,9 +104,26 @@ In R, rows with negative ride lengths were identified using `arrange` and `filte
 
 The cleaned data set (tripdatav3) was saved with the `saveRDS` as an RDS file (tripdatav3.rds)
 
+Review the code for [SQL](https://github.com/Lamerck/Bike-Share-Project/blob/main/sqlscript-for-bikes.sql) and [R](https://github.com/Lamerck/Bike-Share-Project/blob/main/rscript-for-bikes.R)
+
 ---
 
 ### Exploratory Data Analysis
+
+Used SQL first to study understand the statistics, patterns, relationships, and trends in the data at a smaller scale to inform hypotheses. The following are some of the tasks that were examined;
+
+1. Examining central tendencies _(Mean, Mode, Median)_ and identifying outliers
+   
+2. Exploring the distribution of ride lengths and investigating patterns like ride count across the days of the week
+   
+3. Aggregating statistics to key summary statistics like average ride length
+   
+4. Generating additional metrics that could provide more context into the data set
+
+5. Comparing the differences in variable patterns between Casual and Member riders like 
+
+
+---
 
 ### Data Analysis
 
