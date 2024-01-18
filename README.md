@@ -56,6 +56,8 @@ The provided links lead to the index of the 'divvy-tripdata' bucket, where you c
 
 * `R` for data `importing`, `binding` cleaning, and manipulation, involving the addition and removal of columns, calculating various statistics e.g., average ride length, exploring patterns (e.g., popular routes, days, hours), and finally, creating insightful visualizations. Take a look at the [R Script](https://github.com/Lamerck/Bike-Share-Project/blob/main/rscript-for-bikes.R)
 
+* Tableau for visualization of statistics, trends, and relationships in the data. Check out the vizzes and an interactive dashboard in my [workbook](https://public.tableau.com/app/profile/lamerck.kavuma/viz/Book1_17042325813910/Dashboard1)
+
 ### Data Preparation
 
 
