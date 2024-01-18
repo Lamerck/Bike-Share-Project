@@ -2,6 +2,8 @@
 
 ### Table of Contents
 
+---
+
 ### Project Overview
 
 #### Objective
@@ -25,8 +27,8 @@ The dataset comprised of various recorded variables for individual bike-share tr
 #### Techniques Employed
 
 1. Data Acquisition
-2. Data Organization
-3. Data Cleaning
+2. Data Cleaning
+3. Data Organization
 4. Data Transformation
 5. Data Exploration
 6. Data Analysis
@@ -35,6 +37,8 @@ The dataset comprised of various recorded variables for individual bike-share tr
 #### Challenge
 
 The `ride_length` column was unexpectedly found to contain negative values. To address this issue, the `filter` function was employed to examine the rows with inaccurate data. Through this investigation, a data entry error was identified as the source of the problem. Subsequently, the affected rows were removed to ensure the integrity of the dataset.
+
+---
 
 ### Data Sources
 
@@ -48,21 +52,59 @@ This data is organized into 12 files, with each file corresponding to the trips 
 
 The provided links lead to the index of the 'divvy-tripdata' bucket, where you can explore and download the individual data files. Please adhere to the [Data License Agreement](https://divvybikes.com/data-license-agreement) when using the dataset.
 
+---
+
 ### Tools Used
 
 * `Google sheets` to preview one of the datasets to get familiar with the data
   
-*  `SQL` for data integration, transformation, exploration, and preparation for visualization with functions including `combining datasets`, `creating a table` with extracted date/time components, `filtering`, `sorting`, `aggregation`, utilizing `CTEs`. Review the [SQL Script](https://github.com/Lamerck/Bike-Share-Project/blob/main/sqlscript-for-bikes.sql)
+*  `SQL` for data integration, transformation, exploration, and preparation for visualization with functions including combining datasets, creating a table with extracted date/time components, filtering, sorting, aggregation, utilizing CTEs. Review the [SQL Script](https://github.com/Lamerck/Bike-Share-Project/blob/main/sqlscript-for-bikes.sql)
 
-* `R` for data `importing`, `binding` cleaning, and manipulation, involving the addition and removal of columns, calculating various statistics e.g., average ride length, exploring patterns (e.g., popular routes, days, hours), and finally, creating insightful visualizations. Take a look at the [R Script](https://github.com/Lamerck/Bike-Share-Project/blob/main/rscript-for-bikes.R)
+* `R` for data importing, binding cleaning, and manipulation, involving the addition and removal of columns, calculating various statistics e.g., average ride length, exploring patterns (e.g., popular routes, days, hours), and finally, creating insightful visualizations. Take a look at the [R Script](https://github.com/Lamerck/Bike-Share-Project/blob/main/rscript-for-bikes.R)
 
-* Tableau for visualization of statistics, trends, and relationships in the data. Check out the vizzes and an interactive dashboard in my [workbook](https://public.tableau.com/app/profile/lamerck.kavuma/viz/Book1_17042325813910/Dashboard1)
+* `Tableau` for visualization of statistics, trends, and relationships in the data. Check out the vizzes and an interactive dashboard in my [workbook](https://public.tableau.com/app/profile/lamerck.kavuma/viz/Book1_17042325813910/Dashboard1)
+---
+### Data Cleaning and Preparation
 
-### Data Preparation
+* **Importing Data:**
 
+Data sets from individual months were imported into R using the `read.csv` function.
 
+* **Combining Data Sets Vertically:**
 
-### Data Cleaning and Manipulation
+In SQL, 3 individual data sets were combined using the `UNION ALL` operation
+
+In R, 12 individual monthly data sets were combined into one comprehensive data set using `rbind`
+
+* **Saving Data:**
+
+In SQL, the combined data set was saved automatically with the use of the `CREATE TABLE` statement as (tripdataq001)
+
+The combined data set in R was saved with the `saveRDS` as an RDS file (tripdatav1.rds)
+
+* **Adding New Columns:**
+
+Using the `CREATE TABLE` statement and the `EXTRACT` in SQL to create a new table (tripdataq002) with new columns having extracted data date _(start_date)_, time _(start_time)_, and day of the week _(weekday)_ components from the _started_at_ column.
+
+Also, created a `Common Table Expression` (CTE) named (SplitDateTime) to store the split date and time components temporarily
+
+In R, Using the `mutate` function, seven new columns were added to the data set, including _ride_length_, _ride_length_group_, _starting_month_, _starting_date_, _starting_hour_, _day_of_week_, and _route_. These columns were added to add more meaningful information for the analysis
+
+* **Removing Redundant Columns:**
+
+In R, the `select` function was used to remove redundant columns from the combined data set like _start_station_name_, _end_station_name_, _start_station_id_, _end_station_id_, _start_lat_, _start_lng_, _end_lat_, and _end_lng_.
+
+* **Handling Negative Ride Lengths:**
+
+Used the `CTAS` statement and the `Filter` function to Create a Table with only rows having a ride length that is greater than or equal to zero
+
+In R, rows with negative ride lengths were identified using `arrange` and `filter` functions, and the data set was subset to have only rows with ride lengths above or equal to zero.
+
+* **Saving Cleaned Data:**
+
+The cleaned data set (tripdatav3) was saved with the `saveRDS` as an RDS file (tripdatav3.rds)
+
+---
 
 ### Exploratory Data Analysis
 
