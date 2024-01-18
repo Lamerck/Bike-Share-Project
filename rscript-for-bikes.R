@@ -1,4 +1,5 @@
-## Preparing my R environment
+# Used for the large data set where data of all 12 months is joined 
+# Preparing my R environment
 library(tidyverse)
 library(readr)
 library(dplyr)
