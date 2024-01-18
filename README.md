@@ -4,6 +4,38 @@
 
 ### Project Overview
 
+#### Objective
+
+Identifying the differences in bike usage behavior of annual member riders and casual riders through analysis of trips data from 2022 to inform targeted media campaigns aimed at increasing annual member conversions among casual riders.
+
+#### Dataset Preview
+
+The dataset comprised of various recorded variables for individual bike-share trips. To streamline the analysis, irrelevant columns were removed, excluding data that wasn't pertinent to the study. Each trip is uniquely identified by a 'ride_id,' and essential trip details include bike type, start and end station names, station IDs, longitude and latitude coordinates, ride duration, and timestamps. Additional columns were created to facilitate analytical insights.
+
+#### Findings
+
+1. Member riders prefer shorter rides over long rides while casual riders prefer long rides over short rides
+
+2. Rider count peaks in the summer months and is lowest in the winter months with member riders predominant in these winter months
+
+3. Casual riders dominate bike usage on weekend days while member riders dominate bike usage in the week days
+
+4. Docked bikes are only used by by casual riders
+
+#### Techniques Employed
+
+1. Data Acquisition
+2. Data Organization
+3. Data Cleaning
+4. Data Transformation
+5. Data Exploration
+6. Data Analysis
+7. Data Visualization
+
+#### Challenge
+
+The `ride_length` column was unexpectedly found to contain negative values. To address this issue, the `filter` function was employed to examine the rows with inaccurate data. Through this investigation, a data entry error was identified as the source of the problem. Subsequently, the affected rows were removed to ensure the integrity of the dataset.
+
 ### Data Sources
 
 The dataset used in this project was sourced through Coursera and made available by Motivate International Inc from Lyft Bikes and Scooters, LLC. The data is subject to the following [License Agreement](https://divvybikes.com/data-license-agreement).
@@ -18,7 +50,15 @@ The provided links lead to the index of the 'divvy-tripdata' bucket, where you c
 
 ### Tools Used
 
+* `Google sheets` to preview one of the datasets to get familiar with the data
+  
+*  `SQL` for data integration, transformation, exploration, and preparation for visualization with functions including `combining datasets`, `creating a table` with extracted date/time components, `filtering`, `sorting`, `aggregation`, utilizing `CTEs`
+
+* `R` for data `importing`, `binding` cleaning, and manipulation, involving the addition and removal of columns, calculating various statistics e.g., average ride length, exploring patterns (e.g., popular routes, days, hours), and finally, creating insightful visualizations 
+
 ### Data Preparation
+
+
 
 ### Data Cleaning and Manipulation
 
