@@ -1,4 +1,4 @@
-# Bike-Share Trip Data Analysis
+# Bikeshare Trips Data Analysis
 
 ### Table of Contents
 
