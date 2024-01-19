@@ -144,7 +144,88 @@ With R, several exploratory data analysis tasks were performed and on a much lar
 
 ### Data Analysis
 
-For our primary objective mentioned [here above](#project-overview), these are some of the diagonistic SQL queries and R Code that informed our research question.  
+For our primary objective mentioned [here](#project-overview) above, these are some of the diagonistic SQL queries and R Code that informed our research task.
+
+* **SQL**
+
+Calculating the total number of rides and then the total for each rideR type seperately
+```SQL
+SELECT COUNT(*)
+FROM `case-studies-01.tripdata.tripdataq001`
+
+SELECT
+  COUNT(CASE WHEN member_casual = 'member' THEN 1 END) AS total_member,
+  COUNT(CASE WHEN member_casual = 'casual' THEN 1 END) AS total_casual
+FROM `case-studies-01.tripdata.tripdataq001`
+```
+
+Calculating average ride length for all rides, and then for each rider type seperately
+```SQL
+SELECT AVG(ride_length) AS overall_avg_length
+FROM `case-studies-01.tripdata.tripdataq001`
+
+SELECT member_casual, AVG(ride_length) AS member_avg_length
+FROM `case-studies-01.tripdata.tripdataq001`
+GROUP BY member_casual
+```
+
+Rider type that is more common in the long rides that is, above average ride lengths
+```SQL
+WITH above_avg_rides AS (
+  SELECT
+    member_casual,
+    COUNT(*) AS above_threshold_count
+  FROM 
+    `case-studies-01.tripdata.tripdataq001`
+  WHERE 
+    ride_length > 1011
+  GROUP BY
+    member_casual
+),
+total_rides AS (
+  SELECT
+    member_casual,
+    COUNT(*) AS total_count
+  FROM 
+    `case-studies-01.tripdata.tripdataq001`
+  GROUP BY
+    member_casual
+)
+SELECT
+  a.member_casual,
+  a.above_threshold_count,
+  t.total_count,
+  ROUND(a.above_threshold_count / t.total_count * 100, 2) AS percentage_above_threshold
+FROM 
+  above_avg_rides a
+LEFT JOIN 
+  total_rides t
+ON 
+  a.member_casual = t.member_casual
+```
+
+The bicycle type that is most commonly used and rider preference
+```SQL
+SELECT rideable_type, COUNT(*) AS frequency_of_use
+FROM `case-studies-01.tripdata.tripdataq001`
+WHERE rideable_type IS NOT NULL
+GROUP BY rideable_type
+
+SELECT member_casual, COUNT(*) AS eb_frequency_of_use
+FROM `case-studies-01.tripdata.tripdataq001`
+WHERE rideable_type = 'electric_bike'
+GROUP BY member_casual
+
+SELECT member_casual, COUNT(*) AS cb_frequency_of_use
+FROM `case-studies-01.tripdata.tripdataq001`
+WHERE rideable_type = 'classic_bike'
+GROUP BY member_casual
+
+SELECT member_casual, COUNT(*) AS db_frequency_of_use
+FROM `case-studies-01.tripdata.tripdataq001`
+WHERE rideable_type = 'docked_bike'
+GROUP BY member_casual
+```
 
 ---
 
