@@ -152,7 +152,8 @@ Calculating the total number of rides and then the total for each rideR type sep
 ```SQL
 SELECT COUNT(*)
 FROM `case-studies-01.tripdata.tripdataq001`
-
+```
+```SQL
 SELECT
   COUNT(CASE WHEN member_casual = 'member' THEN 1 END) AS total_member,
   COUNT(CASE WHEN member_casual = 'casual' THEN 1 END) AS total_casual
@@ -163,7 +164,8 @@ Calculating average ride length for all rides, and then for each rider type sepe
 ```SQL
 SELECT AVG(ride_length) AS overall_avg_length
 FROM `case-studies-01.tripdata.tripdataq001`
-
+```
+```SQL
 SELECT member_casual, AVG(ride_length) AS member_avg_length
 FROM `case-studies-01.tripdata.tripdataq001`
 GROUP BY member_casual
@@ -210,22 +212,190 @@ SELECT rideable_type, COUNT(*) AS frequency_of_use
 FROM `case-studies-01.tripdata.tripdataq001`
 WHERE rideable_type IS NOT NULL
 GROUP BY rideable_type
-
+```
+```SQL
 SELECT member_casual, COUNT(*) AS eb_frequency_of_use
 FROM `case-studies-01.tripdata.tripdataq001`
 WHERE rideable_type = 'electric_bike'
 GROUP BY member_casual
-
+```
+```SQL
 SELECT member_casual, COUNT(*) AS cb_frequency_of_use
 FROM `case-studies-01.tripdata.tripdataq001`
 WHERE rideable_type = 'classic_bike'
 GROUP BY member_casual
-
+```
+```SQL
 SELECT member_casual, COUNT(*) AS db_frequency_of_use
 FROM `case-studies-01.tripdata.tripdataq001`
 WHERE rideable_type = 'docked_bike'
 GROUP BY member_casual
 ```
+
+Creating a new table with new columns having the starting date, starting time, and day of the week
+```SQL
+CREATE TABLE tripdata.tripdataq002 AS
+SELECT *, DATE(started_at) AS start_date, TIME(started_at) AS start_time, FORMAT_DATE('%A', started_at) AS weekday
+FROM tripdata.tripdataq001
+```
+
+Most popular days of the week
+```SQL
+SELECT weekday, COUNT(*) rides_per_day
+FROM `case-studies-01.tripdata.tripdataq002`
+GROUP BY weekday
+ORDER BY rides_per_day DESC
+```
+```SQL
+SELECT weekday, COUNT(*) rides_per_day
+FROM `case-studies-01.tripdata.tripdataq002`
+WHERE member_casual = 'member'
+GROUP BY weekday
+ORDER BY rides_per_day DESC
+```
+```SQL
+SELECT weekday, COUNT(*) rides_per_day
+FROM `case-studies-01.tripdata.tripdataq002`
+WHERE member_casual = 'casual'
+GROUP BY weekday
+ORDER BY rides_per_day DESC
+```
+
+* **R**
+
+Adding seven new columns
+```r
+tripdatav2 <- tripdatav1 %>% 
+  mutate(
+    ride_length = as.numeric(difftime(ended_at, started_at, units = "secs")), ##ride_length will be in seconds
+    ride_length_group = ntile(ride_length, 20),
+    starting_date = as.Date(started_at),
+    starting_month = month(started_at, label = TRUE),
+    day_of_week = wday(started_at, label = TRUE),
+    starting_hour = hour(started_at),
+    route = paste(substr(start_station_name, 1, 3), substr(end_station_name, 1, 3), sep = "")
+  )
+```
+
+Calculating the total number of rides in 2022 followed by total number rides per rider type
+```r
+nrow(tripdatav3)
+```
+```r
+member_rides <- filter(tripdatav3, member_casual == 'member')
+nrow(member_rides) 
+```
+```r
+casual_rides <- filter(tripdatav3, member_casual == 'casual')
+nrow(casual_rides)
+```
+
+Calculating the overall average ride length and then for each rider type
+```r
+total_length <- sum(tripdatav3$ride_length)
+avg_ride_length <- total_length/total_rides
+```
+```r
+rides_by_members <- nrow(member_rides)
+member_total_length <- sum(filter(tripdatav3, member_casual == 'member')$ride_length)
+avg_member_length <- member_total_length/rides_by_members
+```
+```r
+rides_by_casuals <- nrow(casual_rides)
+casual_total_length <- sum(filter(tripdatav3, member_casual == 'casual')$ride_length)
+avg_casual_length <- casual_total_length/rides_by_casuals
+```
+
+Most popular day of the week overall, then for each rider type
+```r
+popular_days <- sort(-table(tripdatav3$day_of_week))
+head(popular_days)
+```
+```r
+members_popular_days <- sort(-table(filter(tripdatav3, member_casual == 'member')$day_of_week))
+tibble(members_popular_days)
+```
+```r
+casuals_popular_days <- sort(-table(filter(tripdatav3, member_casual == 'casual')$day_of_week))
+tibble(casuals_popular_days)
+```
+
+Most popular hour of the day in general, then for each rider type
+```r
+popular_hours <- sort(-table(tripdatav3$starting_hour))
+head(popular_hours)
+```
+```r
+members_popular_hours <- sort(-table(filter(tripdatav3, member_casual == 'member')$starting_hour))
+head(members_popular_hours)
+```
+```r
+casuals_popular_hours <- sort(-table(filter(tripdatav3, member_casual == 'casual')$starting_hour))
+head(casuals_popular_hours)
+```
+
+Most popular month in general, then for each rider type
+```r
+popular_months <- sort(-table(tripdatav3$starting_month))
+head(popular_months)
+```
+```r
+members_popular_months <- sort(-table(filter(tripdatav3, member_casual == 'member')$starting_month))
+head(members_popular_months)
+```
+```r
+casuals_popular_months <- sort(-table(filter(tripdatav3, member_casual == 'casual')$starting_month))
+head(casuals_popular_months)
+```
+
+Bike type popularity
+```r
+bicycle_type_freq <- sort(-table(tripdatav3$rideable_type))
+head(bicycle_type_freq)
+```
+
+Bike usage among member riders
+
+**Note:** *eb* for *Electric Bikes*, *cb* for *Classic Bikes*, and *db* for *Docked Bikes*
+```r
+members_eb_freq <- filter(filter(tripdatav3, rideable_type == 'electric_bike'), member_casual == 'member')
+nrow(members_eb_freq)
+```
+```r
+members_cb_freq <- filter(filter(tripdatav3, rideable_type == 'classic_bike'), member_casual == 'member')
+nrow(members_cb_freq)
+```
+```r
+members_db_freq <- filter(filter(tripdatav3, rideable_type == 'docked_bike'), member_casual == 'member')
+nrow(members_db_freq)
+```
+
+Then for casual riders
+```r
+casuals_eb_freq <- filter(filter(tripdatav3, rideable_type == 'electric_bike'), member_casual == 'casual')
+nrow(casuals_eb_freq)
+```
+```r
+casuals_cb_freq <- filter(filter(tripdatav3, rideable_type == 'classic_bike'), member_casual == 'casual')
+nrow(casuals_cb_freq)
+```
+```r
+casuals_db_freq <- filter(filter(tripdatav3, rideable_type == 'docked_bike'), member_casual == 'casual')
+nrow(casuals_db_freq)
+```
+
+Visualizing the count of riders of every bike type for each rider type
+```r
+ggplot(tripdatav3, aes(x = rideable_type)) +
+  geom_bar() +
+  labs(x = "Rideable Type", y = "Total User Count",
+       title = "Total User Count by Rideable Type for Members and Casual Riders") +
+  facet_wrap(~member_casual, scales = "free_y", ncol = 1) +
+  theme_minimal()
+```
+
+
+For more R code exploring and analysing this data, check out this rmd [file]() 
 
 ---
 
