@@ -110,22 +110,43 @@ Review the code for [SQL](https://github.com/Lamerck/Bike-Share-Project/blob/mai
 
 ### Exploratory Data Analysis
 
-Used SQL first to study understand the statistics, patterns, relationships, and trends in the data at a smaller scale to inform hypotheses. The following are some of the tasks that were examined;
+SQL was used at first to study and understand the statistics, patterns, relationships, and trends in the data at a smaller scale to inform hypotheses. The following are some of the tasks that were examined;
 
-1. Examining central tendencies _(Mean, Mode, Median)_ and identifying outliers
+1. Examining central tendencies _(Mean, Mode)_ and identifying outliers
    
 2. Exploring the distribution of ride lengths and investigating patterns like ride count across the days of the week
    
-3. Aggregating statistics to key summary statistics like average ride length
+3. Aggregating statistics to key summary statistics like average ride length and road use percentage
    
-4. Generating additional metrics that could provide more context into the data set
+4. Generating additional metrics that could provide more context into the data set like day of the week and starting hour
 
-5. Comparing the differences in variable patterns between Casual and Member riders like 
+6. Comparing the differences in variable patterns between Casual and Member riders like the most popular time of the day to catch a ride for member riders and then casual riders
 
+**Take a look at the [SQL Script](https://github.com/Lamerck/Bike-Share-Project/blob/main/sqlscript-for-bikes.sql) for the EDA task**
+
+With R, several exploratory data analysis tasks were performed and on a much larger dat set with data for a full year including;
+
+1. Calculating and analyzing ride counts in general and then for each rider type
+
+2. Analyzing ride lengths by calculating the average ride length and analyzing average ride lengths for member and casual riders
+  
+3. Exploring popular routes and identifying the the most popular route overall and then for each rider type
+
+4. Analyzing usage by time like peak hours, popular days of the week, popular months for overall rides and then for each rider type
+
+5. Exploring bike type popularity among each rider type
+
+6. Investigating unique routes that were used only once
+
+**Take a look at this [R Script](https://github.com/Lamerck/Bike-Share-Project/blob/main/rscript-for-bikes.R) for EDA tasks**
 
 ---
 
 ### Data Analysis
+
+For our primary objective mentioned [here above](#project-overview), these are some of the diagonistic SQL queries and R Code that informed our research question.  
+
+---
 
 ### Findings
 
@@ -134,3 +155,8 @@ Used SQL first to study understand the statistics, patterns, relationships, and 
 ### Limitations
 
 ### References
+
+
+
+
+
