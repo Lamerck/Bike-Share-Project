@@ -446,18 +446,60 @@ ggplot(tripdatav3, aes(x = rideable_type)) +
 ![User count in every rideable type](https://github.com/Lamerck/Bike-Share-Project/assets/155752655/496c5659-d41f-4f70-abe1-6de324f96c7d)
 
 
-For more R code exploring and analysing this data, check out this rmd [file]() 
+For more R code exploring and analysing this data, check out this rmd [file](https://github.com/Lamerck/Bike-Share-Project/blob/main/Bikeshare_trips_project.pdf) 
 
 ---
 
 ### Findings
 
+The following are the top 3 differences in usage of bikes by annual member riders and casual memebr riders;
+
+* Member riders prefer shorter rides over long rides while casual riders prefer long rides over short rides
+
+![Ride Length Vs Rider Count](https://github.com/Lamerck/Bike-Share-Project/assets/155752655/00f241e2-51bd-4308-b2dd-c939ed0f306c)
+
+* Casual riders dominate bike usage on weekend days while member riders dominate bike usage in the week days
+
+![Week Days Popularity (1)](https://github.com/Lamerck/Bike-Share-Project/assets/155752655/7978e2a3-51c9-43de-82db-644ced36017d)
+
+* Docked bikes are only used by by casual riders
+
+![Bike Type Usage (4)](https://github.com/Lamerck/Bike-Share-Project/assets/155752655/6da0e344-d024-4987-8271-83b04dd9b958)
+
+It is also important to note that;
+
+* Rider count peaks in the summer months and is lowest in the winter months with member riders predominant in these winter months as shown below
+
+![Monthly Usage (3)](https://github.com/Lamerck/Bike-Share-Project/assets/155752655/d5a7cf46-4d1b-49cb-8283-4e2b4852b798)
+
+
+**These visualizations were built with [Tableau](workbook](https://public.tableau.com/app/profile/lamerck.kavuma/viz/Book1_17042325813910/Dashboard1)**
+
+---
+
 ### Recommendations
+
+Based on the analysis and findings, to increase the conversion rates of casual riders into memebr riders,
+
+1. Double down on marketing campaigns in the peak months of May,  June, July, August, and September
+2. Incentivize long weekend rides with offers becasue casual riders are more active on weekends and they refer long rides
+3. Introduce weekday promotional offers for casual riders to increase their bike hire in the non-peak days
+4. Extend exclusive membership offers to docked bike users who are casual riders
+
+View this [report]() for more information about the recommendations
 
 ### Limitations
 
+The dataset provides information about bike rides, but additional context about the locations, weather conditions, marketing data, or specific events could enhance the analysis and interpretation.
+
+The analysis is based on data from the year 2022. Trends observed might be influenced by external factors, and the findings might not be applicable to different timeframes.
+
+There's need for use of more in-depth statistical tests and machine learning techniques for in-depth insights because most of the analysis focused on descriptive, diagonistic, and exploratory aspects.
+
 ### References
 
+1. 
+2. 
 
 
 
