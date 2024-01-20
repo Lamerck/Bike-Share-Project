@@ -44,7 +44,7 @@ The dataset comprised of various recorded variables for individual bike-share tr
 6. Data Analysis
 7. Data Visualization
 
-#### Challenge
+#### Analysis Challenge
 
 The `ride_length` column was unexpectedly found to contain negative values. To address this issue, the `filter` function was employed to examine the rows with inaccurate data. Through this investigation, a data entry error was identified as the source of the problem. Subsequently, the affected rows were removed to ensure the integrity of the dataset.
 
