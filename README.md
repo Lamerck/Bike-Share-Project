@@ -2,9 +2,15 @@
 
 ### Table of Contents
 
-* [Overview](#overview)
-* [Data Sources](#data-sources)
-* [Tools Used](#tools-used)
+1. [Overview](#overview)
+2. [Data Sources](#data-sources)
+3. [Tools Used](#tools-used)
+4. [Data Cleaning and Preperation](#data-cleaning-and-preparation)
+5. [Exploratory Data Analysis](#exploratory-data-analysis)
+6. [Data Analysis](#data-analysis)
+7. [Findings](#findings)
+8. [Recommendations](#recommendations)
+9. [Limitations](#limitations)
 
 ---
 
