@@ -213,6 +213,9 @@ FROM `case-studies-01.tripdata.tripdataq001`
 WHERE rideable_type IS NOT NULL
 GROUP BY rideable_type
 ```
+
+**Note:** *eb* for *Electric Bikes*, *cb* for *Classic Bikes*, and *db* for *Docked Bikes*
+
 ```SQL
 SELECT member_casual, COUNT(*) AS eb_frequency_of_use
 FROM `case-studies-01.tripdata.tripdataq001`
@@ -305,6 +308,17 @@ rides_by_casuals <- nrow(casual_rides)
 casual_total_length <- sum(filter(tripdatav3, member_casual == 'casual')$ride_length)
 avg_casual_length <- casual_total_length/rides_by_casuals
 ```
+Visualizing the relationship between rider count per rider type with increasing riding distance
+```r
+ggplot(tripdatav3, aes(x = as.factor(ride_length_group), fill = member_casual)) +
+  geom_bar(position = "dodge") +
+  labs(x = "Ride Length Sets", y = "Rider Count") +
+  ggtitle("Rider Counts in Percentile Groups of Ride Lengths") +
+  scale_fill_manual(values = c("royalblue", "limegreen"), labels = c("Casual Riders", "Member Riders")) +
+  theme_minimal()
+```
+
+![Rider Count with increasing Ridle Length](https://github.com/Lamerck/Bike-Share-Project/assets/155752655/cacfac1a-67dc-459b-bd50-a48b1df627be)
 
 Most popular day of the week overall, then for each rider type
 ```r
@@ -319,6 +333,19 @@ tibble(members_popular_days)
 casuals_popular_days <- sort(-table(filter(tripdatav3, member_casual == 'casual')$day_of_week))
 tibble(casuals_popular_days)
 ```
+
+Visualizing the trend in Rider Count per Rider Type throghout the week
+
+```r
+ggplot(tripdatav3, aes(x = day_of_week, group = member_casual, color = member_casual)) +
+  geom_line(stat = "count") +
+  labs(x = "Day of the Week", y = "Total User Count",
+       title = "Trend in Rider Type Count Throughout the Week") +
+  scale_x_discrete(labels = c("Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat")) +
+  scale_color_manual(values = c("royalblue", "limegreen"), labels = c("Casual Riders", "Member Riders")) +
+  theme_minimal()
+```
+ ![Bike usage throughout the week](https://github.com/Lamerck/Bike-Share-Project/assets/155752655/b8700be1-b108-4583-ae1f-29801680612e)
 
 Most popular hour of the day in general, then for each rider type
 ```r
@@ -343,10 +370,31 @@ head(popular_months)
 members_popular_months <- sort(-table(filter(tripdatav3, member_casual == 'member')$starting_month))
 head(members_popular_months)
 ```
+Visualizing the trend in daily member rides throughout the year
+
+```r
+ggplot(subset(tripdatav3, member_casual == "member"), aes(x = starting_date)) +
+  geom_bar(position = "dodge", fill = "limegreen") +
+  labs(x = "Date", y = "Member Rider Count", title = "Daily Count of Member Riders") +
+  theme_minimal()
+```
+![Member count throughout 2022](https://github.com/Lamerck/Bike-Share-Project/assets/155752655/66e7749b-0bff-4515-9b8c-fa73fd49d2f7)
+
 ```r
 casuals_popular_months <- sort(-table(filter(tripdatav3, member_casual == 'casual')$starting_month))
 head(casuals_popular_months)
 ```
+
+Visuaiizing the trend in casual memebr rides throughout the year
+
+```r
+ggplot(subset(tripdatav3, member_casual == "casual"), aes(x = starting_date)) +
+  geom_bar(position = "dodge", fill = "royalblue") +
+  labs(x = "Date", y = "Casual Rider Count", title = "Daily Count of Casual Riders") +
+  theme_minimal()
+```
+
+![Casual rider count throughout 2022](https://github.com/Lamerck/Bike-Share-Project/assets/155752655/a2ec2203-a104-446b-98bf-93dcb56ad57a)
 
 Bike type popularity
 ```r
@@ -357,6 +405,7 @@ head(bicycle_type_freq)
 Bike usage among member riders
 
 **Note:** *eb* for *Electric Bikes*, *cb* for *Classic Bikes*, and *db* for *Docked Bikes*
+
 ```r
 members_eb_freq <- filter(filter(tripdatav3, rideable_type == 'electric_bike'), member_casual == 'member')
 nrow(members_eb_freq)
@@ -393,6 +442,8 @@ ggplot(tripdatav3, aes(x = rideable_type)) +
   facet_wrap(~member_casual, scales = "free_y", ncol = 1) +
   theme_minimal()
 ```
+
+![User count in every rideable type](https://github.com/Lamerck/Bike-Share-Project/assets/155752655/496c5659-d41f-4f70-abe1-6de324f96c7d)
 
 
 For more R code exploring and analysing this data, check out this rmd [file]() 
