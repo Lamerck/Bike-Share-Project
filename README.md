@@ -132,7 +132,7 @@ SQL was used at first to study and understand the statistics, patterns, relation
 
 6. Comparing the differences in variable patterns between Casual and Member riders like the most popular time of the day to catch a ride for member riders and then casual riders
 
-**Take a look at the [SQL Script](https://github.com/Lamerck/Bike-Share-Project/blob/main/sqlscript-for-bikes.sql) for the EDA task**
+**Take a look at the [SQL Script](https://github.com/Lamerck/Bike-Share-Project/blob/main/sqlscript-for-bikes.sql) for the EDA tasks**
 
 With R, several exploratory data analysis tasks were performed and on a much larger dat set with data for a full year including;
 
@@ -148,7 +148,7 @@ With R, several exploratory data analysis tasks were performed and on a much lar
 
 6. Investigating unique routes that were used only once
 
-**Take a look at this [R Script](https://github.com/Lamerck/Bike-Share-Project/blob/main/rscript-for-bikes.R) for EDA tasks**
+**Take a look at this [R Script](https://github.com/Lamerck/Bike-Share-Project/blob/main/rscript-for-bikes.R) for the EDA tasks**
 
 ---
 
