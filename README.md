@@ -2,9 +2,13 @@
 
 ### Table of Contents
 
+* [Overview](#overview)
+* [Data Sources](#data-sources)
+* [Tools Used](#tools-used)
+
 ---
 
-### Project Overview
+### Overview
 
 #### Objective
 
@@ -144,11 +148,11 @@ With R, several exploratory data analysis tasks were performed and on a much lar
 
 ### Data Analysis
 
-For our primary objective mentioned [here](#project-overview) above, these are some of the diagonistic SQL queries and R Code that informed our research task.
+For our primary objective mentioned [here](#objective) above, these are some of the diagonistic SQL queries and R Code that informed our research task.
 
 * **SQL**
 
-Calculating the total number of rides and then the total for each rideR type seperately
+Calculating the total number of rides and then the total for each rider type seperately
 ```SQL
 SELECT COUNT(*)
 FROM `case-studies-01.tripdata.tripdataq001`
@@ -473,7 +477,7 @@ It is also important to note that;
 ![Monthly Usage (3)](https://github.com/Lamerck/Bike-Share-Project/assets/155752655/d5a7cf46-4d1b-49cb-8283-4e2b4852b798)
 
 
-**These visualizations were built with [Tableau](workbook](https://public.tableau.com/app/profile/lamerck.kavuma/viz/Book1_17042325813910/Dashboard1)**
+**These visualizations were built with [Tableau](https://public.tableau.com/app/profile/lamerck.kavuma/viz/Book1_17042325813910/Dashboard1)**
 
 ---
 
@@ -486,21 +490,14 @@ Based on the analysis and findings, to increase the conversion rates of casual r
 3. Introduce weekday promotional offers for casual riders to increase their bike hire in the non-peak days
 4. Extend exclusive membership offers to docked bike users who are casual riders
 
-View this [report]() for more information about the recommendations
+View this [report](https://github.com/Lamerck/Bike-Share-Project/blob/main/BIKESHARE%20TRIPS'%20FINDINGS%20PRESENTATION.pdf) for more information about the recommendations
+
+---
 
 ### Limitations
 
-The dataset provides information about bike rides, but additional context about the locations, weather conditions, marketing data, or specific events could enhance the analysis and interpretation.
+* The dataset provides information about bike rides, but additional context about the locations, weather conditions, marketing data, or specific events could enhance the analysis and interpretation.
 
-The analysis is based on data from the year 2022. Trends observed might be influenced by external factors, and the findings might not be applicable to different timeframes.
+* The analysis is based on data from the year 2022. Trends observed might be influenced by external factors, and the findings might not be applicable to different timeframes.
 
-There's need for use of more in-depth statistical tests and machine learning techniques for in-depth insights because most of the analysis focused on descriptive, diagonistic, and exploratory aspects.
-
-### References
-
-1. 
-2. 
-
-
-
-
+* There's need for use of more in-depth statistical tests and machine learning techniques for in-depth insights because most of the analysis focused on descriptive, diagonistic, and exploratory aspects.
