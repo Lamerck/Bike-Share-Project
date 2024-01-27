@@ -24,7 +24,7 @@ Identifying the differences in bike usage behavior of annual member riders and c
 
 The dataset comprised of various recorded variables for individual bike-share trips. To streamline the analysis, irrelevant columns were removed, excluding data that wasn't pertinent to the study. Each trip is uniquely identified by a 'ride_id,' and essential trip details include bike type, start and end station names, station IDs, longitude and latitude coordinates, ride duration, and timestamps. Additional columns were created to facilitate analytical insights.
 
-#### Findings
+#### Conclusions
 
 1. Member riders prefer shorter rides over long rides while casual riders prefer long rides over short rides
 
@@ -496,7 +496,7 @@ Based on the analysis and findings, to increase the conversion rates of casual r
 3. Introduce weekday promotional offers for casual riders to increase their bike hire in the non-peak days
 4. Extend exclusive membership offers to docked bike users who are casual riders
 
-View this [report](https://github.com/Lamerck/Bike-Share-Project/blob/main/BIKESHARE%20TRIPS'%20FINDINGS%20PRESENTATION.pdf) for more information about the recommendations
+View this [report](https://github.com/Lamerck/Bike-Share-Project/blob/main/Bikeshare%20trips%20presentation.pdf) for more information about the recommendations
 
 ---
 
